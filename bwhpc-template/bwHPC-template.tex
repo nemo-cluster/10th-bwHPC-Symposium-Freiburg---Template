@@ -1,0 +1,303 @@
+%%%%% 10. bwHPC Symposium 2024 %%%%%
+
+%%% START: Mandatory header %%%
+% Turn on warnings because of bad style
+\RequirePackage[l2tabu,orthodox]{nag}
+
+% Document class scrartcl
+\documentclass[
+  paper       = a4,
+  headheight  = 16pt,
+  footheight  = 16pt,
+  fontsize    = 10pt,
+  twoside     = true,
+  titlepage   = true,
+]{scrartcl}
+
+% Postscript type 1 fonts
+% For Xelatex/Lualatex
+% \usepackage{fontspec}
+% For pdflatex
+\usepackage[utf8]{inputenc}
+
+% Language settings, please select one
+% English
+\input{../bwhpc-layout/english.tex}
+% or German
+% \input{../bwhpc-layout/german.tex}
+
+% LaTeX bibliography style, please select one
+% biblatex with bibtex fallback (old)
+\input{../bwhpc-layout/bibtex.tex}
+% Use modern biblatex + biber -> New Texlive or Overleaf
+% See url for setup with your favorite editor:
+% https://tex.stackexchange.com/questions/154751/biblatex-with-biber-configuring-my-editor-to-avoid-undefined-citations
+% \input{../bwhpc-layout/biber.tex}
+% Change this to your bib file
+\addbibresource{literature.bib}
+
+% Include bwHPC-Style formatting at the END
+\input{../bwhpc-layout/layout.tex}
+
+%%% END: Mandatory header %%%
+
+%%% START: Mandatory document configuration %%%
+
+% add author info, please add main author to author.tex
+\input{author.tex}
+
+% Start document
+\begin{document}
+
+% Titlepage
+\begin{titlepage}
+% DO NOT CHANGE following 4 lines
+\thispagestyle{myheadings}
+\raggedright
+\vspace*{.05\textheight}
+
+% Title, will be read from author.tex
+{\usekomafont{title}
+\MainTitle % will be read from author.tex, or change here directly
+\par}
+
+% Remove following 4 lines if no sublitle available
+\vspace{\baselineskip}
+{\usekomafont{subtitle}
+\SubTitle{} % will be read from author.tex, or change here directly
+\par}
+
+% DO NOT CHANGE following line
+\vspace{\baselineskip}
+
+% AUTHORS
+% Use when all authors have same affilaition, else see below
+% Authors
+{\usekomafont{author}
+% Corresponding author and ORCID, see last sections of this document
+% \hyperref[sec:cauthor]{AUTHOR} is an anchor to the corresponding author, please change if not main author
+% One author per line
+% Corresponding author info at the end
+\hyperref[sec:cauthor]{\MainAuthor}% will be read from author.tex, or change here directly
+    \,\orcidlogo{https://orcid.org/0000-0003-4886-736X},
+Dirk von Suchodoletz%
+    \,\orcidlogo{https://orcid.org/0000-0002-4382-5104},
+Bernd Wiebelt%
+    \,\orcidlogo{https://orcid.org/0000-0003-2771-4524}
+\par}
+
+% Affiliation
+\vspace{.5\baselineskip}
+{\usekomafont{author}
+% Change affiliation
+\small
+eScience Abteilung, Albert-Ludwigs-Universität, Freiburg, Deutschland
+\par}
+
+% % For multiple affiliations use markers like *, dag, etc.
+% % Authors
+% {\usekomafont{author}
+% % Corresponding author and ORCID, see last sections of this document
+% % \hyperref[sec:cauthor]{AUTHOR} is an anchor to the corresponding author, please change if not main author
+% % One author per line
+% % Corresponding author info at the end
+% \hyperref[sec:cauthor]{\MainAuthor}\textsuperscript{*},
+% Bernd Wiebelt\textsuperscript{*},
+% Dirk von Suchodoletz\textsuperscript{*},
+% Bernd Brot\textsuperscript{\dag}
+% \par}
+
+% % Affiliation
+% \vspace{.5\baselineskip}
+% {\usekomafont{author}
+% % Change affiliation
+% \small
+% % Affiliation 1
+% \textsuperscript{*}{eScience, Universität Freiburg, Freiburg i. Br., Deutschland
+% \\
+% \small
+% % Affiliation 2
+% \textsuperscript{\dag}Kika, 99081 Erfurt, Germany
+% \par}
+
+% DO NOT CHANGE following 4 lines
+\vspace{\baselineskip}
+\let\endtitlepage\relax
+\end{titlepage}
+% Titlepage end
+
+% %%% END: Mandatory document configuration %%%
+
+% %%% START: Header configuration and PDF title %%%
+
+% Define header
+\rohead{\HeadTitle} % will be read from author.tex, or change here directly
+\lehead{\MainAuthor~et~al.} % will be read from author.tex, or change here directly
+
+% Write PDF information
+\hypersetup{
+  pdftitle={\FullTitle},
+  pdfauthor={\MainAuthor~et~al.},
+  pdfkeywords={\Keywords},
+}
+
+% Set page for paper
+\setcounter{page}{\Page}
+
+%%% END: Header configuration and PDF title %%%
+
+
+%%% Start: Document %%%
+
+% Select EN or DE
+% English
+\section*{Abstract}
+% or German
+%\section*{Kurzfassung}
+This is a style guide for contributions to the bwHPC Symposium 2024 in Freiburg.
+Please read carefully.
+
+
+% Section 1
+\section{Formatting}
+
+The following sections define the layout specifically for contributions to the bwHPC Symposium 2024 in Freiburg.
+Please read them carefully.
+
+If your code does not compile or you have errors or other questions, please send us the file or ask us how to solve the problem.
+We will correct and reformat all submissions before publication.
+
+
+% Section 1.1
+\subsection{Language Settings}
+
+You can use language-specific formatting, except for dates.
+
+
+% Section 1.1.1
+\subsubsection{Dates}
+
+Dates should be formatted as dd.mm.yyyy or yyyy-mm-dd (e.g. 31.01.2018, 2018-01-31) unless they are code, shell output or filenames.
+Unfortunately, 31/01/2018 (UK) and 01/31/2018 (US) are ambiguous e.g. 01/02/2018.
+
+
+% Section 1.1.2
+\subsubsection{Quotes}
+
+This text is \enquote{placed in quotation \enquote{marks automatically}} with \enquote{csquotes}.\footnote{csquotes: \url{https://ctan.org/pkg/csquotes}, visited on 31.01.2024.}
+You can force \enquote*{inner/single} quotation marks at any time.
+Remember to always \enquote{end your quote}, otherwise the file will not compile.
+
+
+% Section 1.1.2.1
+\paragraph{German Umlauts.}
+
+German umlauts can either be activated by adding \lstinline|\"| in front of the letter \"a or by using \verb|\usepackage[utf8]{inputenc}| (already activated in \lstinline|layout.tex|).
+Then you can simply write \enquote{ä}.
+
+For UtF-8 we will probably use \enquote{xelatex} with \verb|\usepackage{fontspec}| for the final document.
+You are welcome to adjust the setting yourself in \lstinline|layout.tex|.
+In Overleaf, you can switch from \enquote{pdflatex} to \enquote{xelatex} in the document settings.
+
+
+% Section 1.2
+\subsection{Citation}
+
+For citations, use Bibtex or Biber. Biblatex with Bibtex8 backend is the default for this document, but consider using Biblatex and Biber (see header for more information). Insert your Bibtex/Biber file with \verb|\addbibresource{}|. Example:
+
+\verb|\addbibresource{literature.bib}|.
+
+The final document will use Biber, which offers many more options.
+If you want to try it out, you should first convert your bib file to Biblatex, e.g. with Jabref.
+
+Use \verb|\parencite{<ref>}| for citations.\footnote{Biblatex: \url{https://ctan.org/pkg/biblatex}, visited on 31.01.2024.}
+In the \verb|bwhpc-template| directory you will find a sample file for a Biblatex file with the publication \enquote{bwForCluster NEMO. Forschungscluster für die Wissenschaft}\parencite{bwhpc2019:janczyk_bwforcluster}.
+
+
+\subsection{Units}
+
+For units, use the small/half space \lstinline|'10\,GB'|, e.g. 10\,GB.
+However, you can also use packages such as \enquote{units},\footnote{units: \url{https://ctan.org/pkg/units}, visited on 31.01.2024}
+or \enquote{siunitx}.\footnote{siunitx: \url{https://ctan.org/pkg/siunitx}, visited on 31.01.2024}
+Please use SI units/prefixes.\footnote{Metric Prefixes: \url{https://en.wikipedia.org/wiki/Metric_prefix}, visited on 31.01.2024}
+
+
+\subsection{Sections}
+
+The following sections are available for \enquote{scrartcl}.
+Sections do not have end punctuation.
+Paragraphs must be punctuated at the end.
+
+\verb|\section|, \verb|\subsection|, \verb|\subsubsection| and \verb|\paragraph|, \verb|\subparagraph|, example:
+\begin{verbatim}
+\section{This is a First-Order Title}
+\subsection{This is a Second-Order Title}
+\subsubsection{This is a Third-Order Title}
+\paragraph{This is a Fourth-Order Title.}
+\subparagraph{This is a Fifth-Order Title.}
+\end{verbatim}
+
+
+\subsection{Listings and Code}
+
+For listings and code, we recommend using \enquote{lstlisting}.\footnote{Listings on Overleaf: \url{https://www.overleaf.com/learn/latex/Code_listing}, visited on 31.01.2024}
+\begin{lstlisting}[language=Python, caption=Implementation of ..., label=lst:numpy, numbers=left]
+    import numpy as np
+    ...
+\end{lstlisting}
+
+
+\section{Compiling \LaTeX}
+
+For \enquote{classic} Pdflatex and Bibtex, you can try to compile your files with the following commands:
+\begin{lstlisting}[language=sh, caption=Build Document with Pdflatex and Bibtex, label=lst:pdflatex]
+    pdflatex bwHPC-template.tex
+    bibtex bwHPC-template
+    pdflatex bwHPC-template.tex
+    pdflatex bwHPC-template.tex
+\end{lstlisting}
+
+For Xelatex/Lualatex and Biber you can try to compile your files with the following commands (\autoref{lst:xelatex}):
+\begin{lstlisting}[language=sh, caption=Build Document with Xelatex and Biber, label=lst:xelatex]
+    xelatex bwHPC-template.tex
+    biber bwHPC-template
+    xelatex bwHPC-template.tex
+    xelatex bwHPC-template.tex
+\end{lstlisting}
+
+You can mix and test \*latex and Bibtex/Biber as you wish.
+We will probably use Xelatex and Biblatex/Biber for the final document.
+This document has been tested with Texlive 2020-2023.
+
+The Overleaf link for this template is:
+
+\url{https://www.overleaf.com/read/vbdzmrfjrntj#c56916}
+
+%%% END: Document %%%
+
+%%% START: Corresponding Author and ORCID %%%
+
+% Correspondence information, does not have to be main author 
+% Select EN or DE
+% English
+\subsubsection*{Corresponding Author}
+% or German
+%\subsubsection*{Korrespondenzautor}
+\label{sec:cauthor}
+
+Michael Janczyk:~\email{michael.janczyk@rz.uni-freiburg.de}\\
+eScience Abteilung, Rechenzentrum Albert-Ludwigs-Universität Freiburg,\\
+Hermann-Herder-Str. 10, 79104 Freiburg, Deutschland
+
+\subsubsection*{ORCID} % Optional, else remove
+
+Michael Janczyk\,\orcid{https://orcid.org/0000-0003-4886-736X}\\
+Dirk von Suchodoletz\,\orcid{https://orcid.org/0000-0002-4382-5104}\\
+Bernd Wiebelt\,\orcid{https://orcid.org/0000-0003-2771-4524}
+
+%%% END: Corresponding Author and ORCID %%%
+
+% Print bibliography at end of your document
+\printbibliography
+
+\end{document}

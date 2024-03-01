@@ -1,0 +1,70 @@
+\usepackage[
+  backend=bibtex8,
+  natbib=true,
+  citestyle=authoryear,
+  style=authoryear,
+  maxcitenames=1,
+  maxbibnames=5,
+  uniquename=init,
+  giveninits=true,
+  sortlocale={de_DE_phonebook},
+]{biblatex}
+
+\renewcommand*{\bibfont}{\small}
+
+\DefineBibliographyExtras{british}{%
+ %from german.lbx
+  \protected\def\mkbibdatelong#1#2#3{%
+    \iffieldundef{#3}
+      {}
+      {\mkbibordinal{\thefield{#3}}%
+       \iffieldundef{#2}{}{\nobreakspace}}%
+    \iffieldundef{#2}
+      {}
+      {\mkbibmonth{\thefield{#2}}%
+       \iffieldundef{#1}{}{\space}}%
+    \iffieldbibstring{#1}
+      {\bibstring{\thefield{#1}}}
+      {\dateeraprintpre{#1}\stripzeros{\thefield{#1}}}}%
+  \protected\def\mkbibdateshort#1#2#3{%
+    \iffieldundef{#3}
+      {}
+      {\mkdayzeros{\thefield{#3}}\adddot
+       \iffieldundef{#2}{}{\thinspace}}%
+    \iffieldundef{#2}
+      {}
+      {\mkmonthzeros{\thefield{#2}}%
+       \iffieldundef{#1}
+     {}
+     {\iffieldundef{#3}{/}{\adddot\thinspace}}}%
+    \iffieldbibstring{#1}
+      {\bibstring{\thefield{#1}}}
+      {\dateeraprintpre{#1}\mkyearzeros{\thefield{#1}}}}%
+}
+
+% use eprint for urn: example fields (bib-file)
+% % eprint = {urn:nbn:de:bsz:100-opus-5191},
+% % eprinttype = {urn},
+% in your document preamble define
+\DeclareFieldFormat{eprint:urn}{%
+  \textsc{\scriptsize{URN\addcolon}}\space
+  \ifhyperref
+    {\href{http://www.nbn-resolving.org/#1}{\nolinkurl{#1}}}
+    {\nolinkurl{#1}}
+}
+
+\DeclareFieldFormat{eprint:hdl}{%
+  \textsc{\scriptsize{HDL\addcolon}}\space
+  \ifhyperref
+    {\href{http://hdl.handle.net/#1}{\nolinkurl{#1}}}
+    {\nolinkurl{#1}}
+}
+
+\bibsetup{
+  \setcounter{abbrvpenalty}{10000}
+  \setcounter{highnamepenalty}{10000}
+  \setcounter{lownamepenalty}{10000}
+}
+
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryBibitem{\clearfield{day}}

@@ -1,0 +1,234 @@
+% Resize paper size to print format
+% \setlength\marginparwidth{0pt}
+\usepackage[%
+  paperwidth  = 17cm,
+  paperheight = 24cm,
+  top         = 20mm,
+  bottom      = 30mm,
+  outer       = 20mm,
+  inner       = 23mm,
+  footskip    = 20mm,
+  heightrounded,
+  % showframe,
+]{geometry}
+% space between text and footnote
+\setlength{\skip\footins}{20pt}
+
+% xcolors
+\usepackage{xcolor}
+
+% don't fill page on two-sized pages
+\raggedbottom
+
+% Line spacing
+\usepackage{setspace}
+\setstretch{1,3}
+
+% Hurenkinder und Schusterjungen
+% Hurenkinder
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+% Schusterjungen
+% \clubpenalty = 10000
+% Hurenkinder Alternativen
+% \looseness=-1 immediately after the last word of the paragraph to set it tight
+% \enlargethispage{\baselineskip} to add a line to the page
+% % \enlargethispage{-\baselineskip} may produce a (more-or-less) acceptable two-line widow
+
+% DRAFT
+% \usepackage{draftwatermark}
+% \SetWatermarkText{\textsc{DRAFT}}
+% \SetWatermarkColor[gray]{0.9}
+
+% Floating figures
+\usepackage{graphicx}
+\usepackage{subfig}
+
+% Postscript type 1 fonts
+% For Xelatex/Lualatex
+%\usepackage{fontspec}
+% For pdflatex
+%\usepackage[utf8]{inputenc}
+% Latin modern font
+\usepackage{lmodern}
+\renewcommand*{\familydefault}{\rmdefault}
+
+% for \FloatBarrier
+\usepackage{placeins}
+
+% math packages
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Caption setup
+\usepackage[font={footnotesize}]{caption}
+\setcapwidth{0.8\textwidth}
+\setcapindent{0pt}
+\addtokomafont{caption}{\centering}
+\addtokomafont{captionlabel}{\bfseries}
+
+% colors for listings
+\colorlet{commentcolour}{green!50!black}
+\colorlet{stringcolour}{red!60!black}
+\colorlet{keywordcolour}{magenta!90!black}
+\colorlet{exceptioncolour}{yellow!50!red}
+\colorlet{commandcolour}{blue!60!black}
+\colorlet{numpycolour}{blue!60!green}
+\colorlet{literatecolour}{magenta!90!black}
+\colorlet{promptcolour}{green!50!black}
+\colorlet{specmethodcolour}{violet}
+
+% Listings for code
+\usepackage{textcomp} % enable straight quotes in listings package
+\usepackage{listings}
+\lstset{
+  upquote           = true, % straight quotes
+  captionpos        = b, % bottom
+  frame             = shadowbox,
+  framesep          = 5pt,
+  framexleftmargin  = -5pt,
+  framexrightmargin = -10pt,
+  rulecolor         = \color{black!40},
+  rulesepcolor      = \color{lightgray!60},
+  aboveskip         = \bigskipamount,
+  numberstyle       = {\scriptsize},
+  numbersep         = -8pt,
+  % numbers           = left
+}
+\makeatletter
+\lstdefinestyle{mylststyle}{
+  basicstyle=%
+    \ttfamily
+    \lst@ifdisplaystyle\footnotesize\fi
+}
+\makeatother
+\lstset{style=mylststyle}
+% Python highlighting
+\lstset{
+stringstyle=\color{stringcolour},
+alsoletter={1234567890},
+otherkeywords={\%, \}, \{, \&, \|},
+keywordstyle=\color{keywordcolour}\bfseries,
+emph={and,break,class,continue,def,yield,del,elif ,else,%
+except,exec,finally,for,from,global,if,import,in,%
+lambda,not,or,pass,print,raise,return,try,while,assert,with},
+emphstyle=\color{blue}\bfseries,
+emph={[2]True, False, None},
+emphstyle=[2]\color{keywordcolour},
+emph={[3]object,type,isinstance,copy,deepcopy,zip,enumerate,reversed,list,set,len,dict,tuple,xrange,append,execfile,real,imag,reduce,str,repr},
+emphstyle=[3]\color{commandcolour},
+emph={Exception,NameError,IndexError,SyntaxError,TypeError,ValueError,OverflowError,ZeroDivisionError},
+emphstyle=\color{exceptioncolour}\bfseries,
+morecomment=[s]{"""}{"""},
+commentstyle=\color{commentcolour}\slshape,
+emph={[4]ode,fsolve,sqrt,exp,sin,cos,arctan,arctan2,arccos,pi,array,norm,solve,dot,arange,isscalar,max,sum,flatten,shape,reshape,find,any,all,abs,plot,linspace,legend,quad,polyval,polyfit,hstack,concatenate,vstack,column_stack,empty,zeros,ones,rand,vander,grid,pcolor,eig,eigs,eigvals,svd,qr,tan,det,logspace,roll,min,mean,cumsum,cumprod,diff,vectorize,lstsq,cla,eye,xlabel,ylabel,squeeze},
+emphstyle=[4]\color{numpycolour},
+emph={[5]__init__,__add__,__mul__,__div__,__sub__,__call__,__getitem__,__setitem__,__eq__,__ne__,__nonzero__,__rmul__,__radd__,__repr__,__str__,__get__,__truediv__,__pow__,__name__,__future__,__all__},
+emphstyle=[5]\color{specmethodcolour},
+emph={[6]assert,yield},
+emphstyle=[6]\color{keywordcolour}\bfseries,
+emph={[7]range},
+emphstyle={[7]\color{keywordcolour}\bfseries},
+}
+
+% hyperref package
+% change font to itshape
+\renewcommand\UrlFont{\rmfamily\itshape}
+\usepackage[%
+  colorlinks  = true,%
+  allcolors   = black,%
+  urlcolor    = black,%
+  pdfencoding = auto,%
+  hyperindex,%
+  pageanchor,%
+  pdfdisplaydoctitle,%
+  psdextra,%
+  frenchlinks=true,
+  final%
+]{hyperref}
+\usepackage{doi}
+
+% Header/Footer
+\usepackage[headsepline]{scrlayer-scrpage}
+\clearpairofpagestyles
+\setkomafont{pageheadfoot}{\footnotesize \rmfamily}
+\setkomafont{pagination}{\rmfamily}
+% KSP narrow spacing
+\setkomafont{title}{\linespread{1} \huge \rmfamily \textbf}
+\setkomafont{subtitle}{\linespread{1} \large \rmfamily \textbf}
+\setkomafont{author}{{\linespread{1} \rmfamily}}
+\setkomafont{date}{\rmfamily}
+\setkomafont{dedication}{{\linespread{1} \rmfamily}}
+\setkomafont{publishers}{\rmfamily}
+\setkomafont{subject}{\rmfamily}
+\setkomafont{titlehead}{\rmfamily}
+% KSP narrow spacing
+\addtokomafont{disposition}{\linespread{1} \rmfamily}
+
+% Add titlehead to titlepage
+\DeclareNewLayer[%
+  headsep,
+  foreground,
+  contents={%
+    \begin{minipage}[t]{\textwidth}%
+      \usekomafont{titlehead}{\csname @titlehead\endcsname\par}%
+    \end{minipage}\par}
+]{titlehead}
+\DeclarePageStyleByLayers{titlepage}{titlehead}
+\AddToHook{cmd/maketitle/after}{\thispagestyle{titlepage}}
+
+% Abstract neu definieren
+% \makeatletter
+% \@ifclassloaded{scrbook}{}{
+%   \renewenvironment{abstract}
+%     {\normalsize
+%       \list{}{
+% 	% \setlength{\leftmargin}{0.05\textwidth}%
+%     \setlength{\leftmargin}{0\textwidth}%
+% 	\setlength{\rightmargin}{\leftmargin}%
+%       }%
+%       \item\relax}
+%       {\endlist}
+%   }
+% \makeatother
+
+% Remove parskip on items
+\makeatletter
+\def\@listI{\leftmargin\leftmargin
+            \parsep 1\p@ \@plus2\p@ \@minus\p@
+            \topsep 8\p@ \@plus2\p@ \@minus4\p@
+%             \topsep\z@
+            \itemsep1\p@ \@plus2\p@ \@minus\p@}
+\makeatother
+
+\newcommand*{\mainauthor}[1]{\def\MainAuthor{#1}}
+\newcommand*{\cauthor}[1]{\def\CAuthor{#1}}
+\newcommand*{\booktitle}{Proceedings of the 10th bwHPC Symposium}
+\newcommand*{\headtitle}[1]{\def\HeadTitle{#1}}
+\newcommand*{\maintitle}[1]{\def\MainTitle{#1}}
+\newcommand*{\subt}[1]{\def\SubTitle{#1}}
+\newcommand*{\fulltitle}[1]{\def\FullTitle{#1}}
+\newcommand*{\orcidauth}[1]{\def\OrcID{#1}}
+\newcommand*{\orcid}[1]{\href{#1}{\includegraphics[height=10pt]{../bwhpc-layout/orcidlogo.pdf}\,\nolinkurl{#1}}}
+\newcommand*{\orcidlogo}[1]{\href{#1}{\includegraphics[height=10pt]{../bwhpc-layout/orcidlogo.pdf}}}
+\newcommand*{\affiliation}[1]{\date{#1}}
+\newcommand*{\cmail}[1]{\def\CMail{#1}}
+\newcommand*{\email}[1]{\href{mailto:#1}{\nolinkurl{#1}}}
+\newcommand*{\docver}[1]{\def\DocVer{#1}}
+\newcommand*{\pagestart}[1]{\def\Page{#1}}
+\newcommand*{\keywords}[1]{\def\Keywords{#1}}
+
+%%% page config
+
+% footer
+\ofoot[]{\pagemark}
+
+% delete date
+\date{}
+
+% Update PDF info
+\hypersetup{
+  pdfsubject  = {Proceedings of the 10th bwHPC Symposium, Freiburg September 2024},
+  pdfkeywords = {bwHPC, HPC, 10th bwHPC Symposium},
+}
