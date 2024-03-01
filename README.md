@@ -23,4 +23,8 @@ This document has been tested with Texlive 2020-2023.
 
 The Overleaf link for this template is:
 
-(https://www.overleaf.com/read/vbdzmrfjrntj#c56916)
+https://www.overleaf.com/read/vbdzmrfjrntj#c56916
+
+The Github template link is:
+
+https://github.com/nemo-cluster/10th-bwHPC-Symposium-Freiburg-Template
