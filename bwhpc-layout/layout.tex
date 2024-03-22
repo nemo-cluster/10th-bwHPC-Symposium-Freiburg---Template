@@ -3,11 +3,11 @@
 \usepackage[%
   paperwidth  = 17cm,
   paperheight = 24cm,
-  top         = 20mm,
-  bottom      = 30mm,
-  outer       = 20mm,
+  top         = 25mm,
+  bottom      = 25mm,
+  outer       = 15mm,
   inner       = 23mm,
-  footskip    = 20mm,
+  footskip    = 10mm,
   heightrounded,
   % showframe,
 ]{geometry}
@@ -49,8 +49,8 @@
 %\usepackage{fontspec}
 % For pdflatex
 %\usepackage[utf8]{inputenc}
-% Latin modern font
-\usepackage{lmodern}
+% Font charter or utopia
+% \usepackage{utopia}
 \renewcommand*{\familydefault}{\rmdefault}
 
 % for \FloatBarrier
@@ -133,8 +133,8 @@ emphstyle={[7]\color{keywordcolour}\bfseries},
 }
 
 % hyperref package
-% change font to itshape
-\renewcommand\UrlFont{\rmfamily\itshape}
+% change font to rmfamily and/or itshape
+\renewcommand\UrlFont{\rmfamily}
 \usepackage[%
   colorlinks  = true,%
   allcolors   = black,%
@@ -153,7 +153,7 @@ emphstyle={[7]\color{keywordcolour}\bfseries},
 \usepackage[headsepline]{scrlayer-scrpage}
 \clearpairofpagestyles
 \setkomafont{pageheadfoot}{\footnotesize \rmfamily}
-\setkomafont{pagination}{\rmfamily}
+\setkomafont{pagination}{\footnotesize \rmfamily}
 % KSP narrow spacing
 \setkomafont{title}{\linespread{1} \huge \rmfamily \textbf}
 \setkomafont{subtitle}{\linespread{1} \large \rmfamily \textbf}

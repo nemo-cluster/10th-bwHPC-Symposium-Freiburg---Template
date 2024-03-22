@@ -15,10 +15,14 @@
 ]{scrartcl}
 
 % Postscript type 1 fonts
-% For Xelatex/Lualatex
+% For Xelatex/Lualatex and fonts XCharter (Charter), TeX Gyre Pagella (URW Palladio, Palatino) or heuristica (Utopia)
 % \usepackage{fontspec}
-% For pdflatex
+% \setmainfont{TeX Gyre Pagella}
+% XCharter + Math
+% \setmainfont[otfmath]{XCharter}
+% For pdflatex inputenc and fonts XCharter (Charter), tgpagella (TeX Gyre Pagella, URW Palladio, Palatino) or heuristica (Utopia)
 \usepackage[utf8]{inputenc}
+\usepackage{XCharter}
 
 % Language settings, please select one
 % English
@@ -192,7 +196,7 @@ Remember to always \enquote{end your quote}, otherwise the file will not compile
 % Section 1.1.2.1
 \paragraph{German Umlauts.}
 
-German umlauts can either be activated by adding \lstinline|\"| in front of the letter \"a or by using \verb|\usepackage[utf8]{inputenc}| (already activated in \lstinline|layout.tex|).
+German umlauts can either be activated by adding \lstinline|\"| in front of the letter \"a or by using \verb|\usepackage[utf8]{inputenc}| (already activated in the layout file \lstinline|layout.tex|).
 Then you can simply write \enquote{ä}.
 
 For UtF-8 we will probably use \enquote{xelatex} with \verb|\usepackage{fontspec}| for the final document.
@@ -228,7 +232,10 @@ The following sections are available for \enquote{scrartcl}.
 Sections do not have end punctuation.
 Paragraphs must be punctuated at the end.
 
-\verb|\section|, \verb|\subsection|, \verb|\subsubsection| and \verb|\paragraph|, \verb|\subparagraph|, example:
+\verb|\section|, \verb|\subsection|, \verb|\subsubsection| and \verb|\paragraph|, \verb|\subparagraph|
+
+\noindent
+Examples:
 \begin{verbatim}
 \section{This is a First-Order Title}
 \subsection{This is a Second-Order Title}
